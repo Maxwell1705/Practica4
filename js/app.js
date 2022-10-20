@@ -86,8 +86,19 @@ function llenar(){
         arreglo[con] = aleatorio;
     }
 
-    
+    let orden = ordenarValores(arreglo);
 
+    for(let con = 0; con<Limite; con++){
+        listaNumeros.options[con] = new Option(orden[con]);
+    }
+    
+}
+function validar(){
+    validarLimite = document.querySelector('#Limite').value;
+
+if(validarLimite == 0){
+        alert('Ingrese un valor');
+    }
 }
 //Hacer commit "Generacion de numeros aleatorios"
 //Hacer commit "Validacion de caja de texto limite"

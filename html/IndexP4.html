@@ -11,8 +11,8 @@
     <h1>Practica 4 U2</h1>  
 
     <label for="">Cantidad de Numeros aleatorios a Generar</label>
-    <input type="text" id="Limite" name="Limite">
-    <button id="btnLlenar" onclick="llenar()">Llenar con Num. Aleatorio</button>
+    <input type="text" id="Limite" name="Limite" required="true" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+    <button id="btnLlenar" onclick="llenar(), validar()">Llenar con Num. Aleatorio</button>
     <select name="numeros" id="numeros"></select>
     
     <section>
