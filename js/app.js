@@ -68,3 +68,27 @@ function mostrar(){
         ordenado.innerHTML = "Ordenados de mayor a menor son: " + ordenados(numeros);
 }
 
+//Clase
+
+function llenar(){
+    var Limite = document.getElementById('Limite').value;
+    var listaNumeros = document.getElementById('numeros');
+    var arreglo = [];
+
+    while(listaNumeros.options.length>0){
+        listaNumeros.remove(0);
+    }
+
+    for(let con = 0; con<Limite; con++){
+
+        let aleatorio = Math.floor(Math.random()*50)+1;
+        listaNumeros.options[con] = new Option(aleatorio,'valor:' + con);
+        arreglo[con] = aleatorio;
+    }
+
+    
+
+}
+//Hacer commit "Generacion de numeros aleatorios"
+//Hacer commit "Validacion de caja de texto limite"
+//Hacer commit "Listanumeros Ordenados Ascendente"
