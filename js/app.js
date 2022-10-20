@@ -100,6 +100,23 @@ if(validarLimite == 0){
         alert('Ingrese un valor');
     }
 }
-//Hacer commit "Generacion de numeros aleatorios"
-//Hacer commit "Validacion de caja de texto limite"
+function ordenarValores(numeros){
+    let array = numeros, longOrden = numeros.length;
+    let band = false;
+
+    while(!band){
+        band = true;
+        for(let i=0; i<longOrden; i++){
+            if(array[i] > array[i+1]){
+                aux = array[i+1];
+                array [i+1] = array [i];
+                array[i] = aux;
+                band = false;
+            }
+        }
+    }
+    return array;
+}
+//Hacer commit "Generacion de numeros aleatorios"Hecho
+//Hacer commit "Validacion de caja de texto limite"Hecho
 //Hacer commit "Listanumeros Ordenados Ascendente"
