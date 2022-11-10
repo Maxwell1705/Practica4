@@ -5,17 +5,44 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Practica 4  U2</title>
+    <link rel="stylesheet" href="/css/estiloP4.css">
     <script src="/js/app.js"></script>
 </head>
 <body>
     <h1>Practica 4 U2</h1>  
 
-    <label for="">Cantidad de Numeros aleatorios a Generar</label>
-    <input type="text" id="Limite" name="Limite" required="true" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
-    <button id="btnLlenar" onclick="llenar(), validar()">Llenar con Num. Aleatorio</button>
-    <select name="numeros" id="numeros"></select>
+    <section>
+    <div id="contenido1">
+    <h3 id="titulo2">Generador de numeros aleatorios</h3>
+    <div id="contenedor-numerosAleatorios">
+        <div id="numerosAleatorios">
+            <label>Cantidad de Numeros aleatorios a generar:</label>
+            <input type="text" id="limite" name="limite" onkeypress="return event.charCode >= 48 && event.charCode <= 57">
+            <p id="errorLimite" style="color: brown; visibility: hidden;">*</p>
+        </div>
+
+        <button id="btnLlenar" onclick="llenar(), alerta()">Llenar con Números Aleatorios</button>
+
+        <select name="numeros" id="numeros"></select>
+    </div>
+    <hr>
+
+    <br>
+    <label>Porcentaje de Pares</label>
+    <br>
+    <label id="porPares"></label>
+    <br>
+    <label>Porcentaje de Impares</label>
+    <br>
+    <label id="porImpares"></label>
+    <br>
+    <label id="EsSimetrico"></label> 
+    </div>
+    </section>
     
     <section>
+    <div id="contenido2">
+        <h3 id="titulo1">Arreglos</h3>
         <h2>Arreglo:</h2>
         <p id="arreglo"></p>
         <h2>Funcion 1:</h2>
@@ -25,6 +52,7 @@
         <h2>Funcion 3:</h2>
         <p id="orden"></p>
         <button id="boton" onclick="mostrar()">Mostrar</button>
+    </div>
     </section>
 
 </body>

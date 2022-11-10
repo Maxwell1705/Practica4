@@ -71,52 +71,119 @@ function mostrar(){
 //Clase
 
 function llenar(){
-    var Limite = document.getElementById('Limite').value;
-    var listaNumeros = document.getElementById('numeros');
+    var limite = document.getElementById('limite').value;
+    var Listanumeros = document.getElementById('numeros');
+    let par = document.getElementById('porPares');
+    let imp = document.getElementById('porImpares');
+    let simetria = document.getElementById('EsSimetrico');
     var arreglo = [];
 
-    while(listaNumeros.options.length>0){
-        listaNumeros.remove(0);
+    // Limpiar las opciones del select
+    while(Listanumeros.options.length>0){
+        Listanumeros.remove(0);
     }
 
-    for(let con = 0; con<Limite; con++){
-
-        let aleatorio = Math.floor(Math.random()*50)+1;
-        listaNumeros.options[con] = new Option(aleatorio,'valor:' + con);
+    for(let con = 0; con < limite; con++) {
+        let aleatorio = Math.floor(Math.random()*(50)+1); 
+        Listanumeros.options[con] = new Option(aleatorio, 'valor:' + con);
         arreglo[con] = aleatorio;
-    }
-
-    let orden = ordenarValores(arreglo);
-
-    for(let con = 0; con<Limite; con++){
-        listaNumeros.options[con] = new Option(orden[con]);
+     
     }
     
-}
-function validar(){
-    validarLimite = document.querySelector('#Limite').value;
+    let orden = ordenarValoresSelect(arreglo);
 
-if(validarLimite == 0){
-        alert('Ingrese un valor');
+    for(let con = 0; con<limite; con++){
+        Listanumeros.options[con] = new Option(orden[con]);
+    }
+
+    par.innerHTML = valorPares(arreglo).toFixed(2) + "%"; 
+    imp.innerHTML = valorImpares(arreglo).toFixed(2) + "%"; 
+
+    
+    let pares = valorPares(arreglo);
+    let impares = valorImpares(arreglo);
+
+    if(pares > 75 || impares >75){
+        simetria.innerHTML = "No es simetrico";
+    }else {
+        simetria.innerHTML = "Es simetrico";
+    }
+
+
+
+    // hacer commit 'Generacion de numeros aleatorios -listo
+    // hacer commit 'Validacion de caja de texto (limite) REQUERIDO Y NUMERICO
+    // hacer commit con la listanumeros ORDENADOS ASCENDENTE
+}
+
+function alerta(){
+    valor = document.getElementById('limite').value;
+
+    errorValor = document.getElementById('errorLimite');
+
+    valor== "" ? errorValor.style.visibility = 'visible': errorValor.style.visibility = 'hidden' ;
+
+    if(valor==0){
+
+        alert("Faltan datos por capturar");
+
     }
 }
-function ordenarValores(numeros){
-    let array = numeros, longOrden = numeros.length;
+
+// ordenar menor a mayor
+function ordenarValoresSelect(numeros){
+    let arr = numeros, longitudOrdenMayor = numeros.length;
     let band = false;
 
     while(!band){
         band = true;
-        for(let i=0; i<longOrden; i++){
-            if(array[i] > array[i+1]){
-                aux = array[i+1];
-                array [i+1] = array [i];
-                array[i] = aux;
+        for(let i=0; i<longitudOrdenMayor; i++){
+                    // [2] 97                          [1] 12
+            if(arr[i] > arr[i+1]){
+                aux = arr[i+1];   //aux = 12
+                arr [i+1] = arr [i]; // numerosDesordenados[1] = 97
+                arr[i] = aux; // numerosDesordenados [2] = 12
                 band = false;
             }
         }
     }
-    return array;
+    return arr;
 }
-//Hacer commit "Generacion de numeros aleatorios"Hecho
-//Hacer commit "Validacion de caja de texto limite"Hecho
-//Hacer commit "Listanumeros Ordenados Ascendente"
+
+// contar los numeros pares e impares para saber su porcentaje
+// la diferencia no sea mayor al 25%
+
+// contar numeros pares e impartes
+// contar numeros pares
+function valorPares(numeros){
+    let contador = 0; 
+    let arr = numeros;
+    let numerosL = numeros.length;
+    for(let i=0; i<numerosL; i++){
+        if(arr[i]%2 == 0){ 
+
+            contador++;
+        }
+    }
+    contador = ((contador * 100) / numerosL);
+    return contador;
+
+    
+
+}
+
+// contar numeros impares
+function valorImpares(numeros){
+    let contador = 0; 
+    let arr = numeros;
+    let numerosL = numeros.length;
+    for(let i=0; i<numerosL; i++){
+        if(arr[i]%2 != 0){ 
+
+            contador++;
+        }
+    }
+    contador = ((contador * 100) / numerosL);
+    return contador;
+
+}
